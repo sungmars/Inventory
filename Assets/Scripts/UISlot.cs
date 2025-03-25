@@ -31,6 +31,8 @@ public class UISlot : MonoBehaviour
         }
 
         inventory.RefreshAllSlots(); // 모든 슬롯 다시 그림
+        UIManager.Instance.UIStatus.UpdateUI();//스테이터스창 UI갱긴
+
     }
 
     public void RefreshUI()

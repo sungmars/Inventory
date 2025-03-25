@@ -20,7 +20,7 @@ public class UIStatus : MonoBehaviour
         UpdateUI();
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
         if (character != null)
         {
