@@ -1,38 +1,34 @@
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIMainMenu : MonoBehaviour
 {
-    [SerializeField] private TMP_Text characterNameText;
-    [SerializeField] private TMP_Text levelText;
-    [SerializeField] private TMP_Text experienceText;
-    [SerializeField] private TMP_Text goldText;
-    private Character character;
+    [SerializeField] private Button statusButton;
+    [SerializeField] private Button inventoryButton;
+    [SerializeField] private Text playerInfoText;
+    private void Start()
+    {
+        // 버튼 클릭 시 UIManager를 통해 해당 UI 열기
+        statusButton.onClick.AddListener(OnClickStatus);
+        inventoryButton.onClick.AddListener(OnClickInventory);
+    }
 
+    private void OnClickStatus()
+    {
+        UIManager.Instance.ShowStatus();
+    }
+
+    private void OnClickInventory()
+    {
+        UIManager.Instance.ShowInventory();
+    }
+
+    public void OpenMainMenu()
+    {
+        UIManager.Instance.ShowMainMenu();
+    }
     public void SetCharacter(Character character)
     {
-        this.character = character;
-        UpdateUI();
-    }
-    private void UpdateUI()
-    {
-        if (character != null)
-        {
-            characterNameText.text = character.Name;
-            levelText.text = $"{character.Level}";
-            experienceText.text = $"{character.Experience}/{character.maxExp}";
-            goldText.text = $"{character.Gold}";
-        }
-    }
-    public void OnStartGame()
-    {
-        UIManager uiManager = FindObjectOfType<UIManager>();
-        uiManager.ShowStatus();
-    }
-
-    public void OnOpenInventory()
-    {
-        UIManager uiManager = FindObjectOfType<UIManager>();
-        uiManager.ShowInventory();
+        playerInfoText.text = $"{character.Name} (Lv. {character.Level}) - 골드: {character.Gold} G";
     }
 }
