@@ -16,6 +16,9 @@ public class Character
 
     private Item equippedWeapon;
     private Item equippedArmor;
+    public Item EquippedWeapon => equippedWeapon;
+    public Item EquippedArmor => equippedArmor;
+
     public Character(string name, int level, int attackPower, int defense, int maxHealth, float criticalChance, int gold)
     {
         Name = name;
