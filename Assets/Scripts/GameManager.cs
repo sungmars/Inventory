@@ -1,8 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+
+    [Header("ScriptableObject 아이템 데이터")]
+    [SerializeField] private List<ItemData> itemDataList = new List<ItemData>();
 
     public Character Player { get; private set; }
 
@@ -26,18 +30,20 @@ public class GameManager : MonoBehaviour
     {
         Player = new Character("Chad", 1, 10, 5, 100, 0.15f, 500);
 
-        var sword = new Item("브론즈 소드", ItemType.Weapon, attackBonus: 5);
-        var shield = new Item("나무 방패", ItemType.Armor, defenseBonus: 3);
+        foreach (ItemData data in itemDataList)
+        {
+            var item = new Item(data);
+            Player.AddItem(item);
 
-        Player.AddItem(sword);
-        Player.AddItem(shield);
-
-        Player.Equip(sword);
-        Player.Equip(shield);
+            // 자동 장착 예시 (무기 1개, 방어구 1개만)
+            if (item.Type == ItemType.Weapon && Player.EquippedWeapon == null)
+                Player.Equip(item);
+            else if (item.Type == ItemType.Armor && Player.EquippedArmor == null)
+                Player.Equip(item);
+        }
 
         UIManager.Instance.UIMainMenu.SetCharacter(Player);
         UIManager.Instance.UIStatus.SetCharacter(Player);
         UIManager.Instance.UIInventory.InitInventoryUI(Player.Inventory, Player);
     }
-
 }
