@@ -36,14 +36,12 @@ public class UIManager : MonoBehaviour
 
     public void ShowStatus()
     {
-        uiMainMenu.gameObject.SetActive(false);
         uiStatus.gameObject.SetActive(true);
         uiInventory.gameObject.SetActive(false);
     }
 
     public void ShowInventory()
     {
-        uiMainMenu.gameObject.SetActive(false);
         uiStatus.gameObject.SetActive(false);
         uiInventory.gameObject.SetActive(true);
     }

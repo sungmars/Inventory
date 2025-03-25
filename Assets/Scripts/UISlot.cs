@@ -1,9 +1,10 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UISlot : MonoBehaviour
 {
-    [SerializeField] private Text itemNameText;
+    [SerializeField] private TMP_Text itemNameText;
     [SerializeField] private Image backgroundImage;
 
     private Item item;

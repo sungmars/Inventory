@@ -8,9 +8,9 @@ public class UIStatus : MonoBehaviour
     [SerializeField] private TMP_Text defenseText;
     [SerializeField] private TMP_Text healthText;
     [SerializeField] private TMP_Text critChanceText;
-    [SerializeField] private Text goldText;
-    [SerializeField] private Text weaponText;
-    [SerializeField] private Text armorText;
+    [SerializeField] private TMP_Text goldText;
+    [SerializeField] private TMP_Text weaponText;
+    [SerializeField] private TMP_Text armorText;
 
     private Character character;
 
@@ -25,11 +25,11 @@ public class UIStatus : MonoBehaviour
         if (character != null)
         {
 
-            healthText.text = $"체력: {character.Health}/{character.MaxHealth}";
-            attackText.text = $"공격력: {character.AttackPower}";
-            defenseText.text = $"방어력: {character.Defense}";
-            critChanceText.text = $"치명타 확률: {character.CriticalChance * 100f:0.0}%";
-            goldText.text = $"골드: {character.Gold}";
+            healthText.text = $"{character.Health}/{character.MaxHealth}";
+            attackText.text = $"{character.AttackPower}";
+            defenseText.text = $"{character.Defense}";
+            critChanceText.text = $"{character.CriticalChance * 100f:0.0}%";
+            goldText.text = $"{character.Gold}";
 
             weaponText.text = character.EquippedWeapon != null
                 ? $"무기: {character.EquippedWeapon.Name} (+{character.EquippedWeapon.AttackBonus})"

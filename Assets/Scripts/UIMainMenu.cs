@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,7 +6,7 @@ public class UIMainMenu : MonoBehaviour
 {
     [SerializeField] private Button statusButton;
     [SerializeField] private Button inventoryButton;
-    [SerializeField] private Text playerInfoText;
+    [SerializeField] private TMP_Text playerInfoText;
     private void Start()
     {
         // 버튼 클릭 시 UIManager를 통해 해당 UI 열기
